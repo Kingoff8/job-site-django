@@ -12,7 +12,7 @@
     <div class="card-body">
         <h5 class="card-title">{{ obj.company }}</h5>
         <p class="card-text">{{ obj.description }}</p>
-        <p class="text-muted small">{{ obj.city.name }} | {{ obj.language.name }} | {{ obj.timestamp.name }}</p>
+        <p class="text-muted small">{{ obj.city.name }} | {{ obj.language.name }} | {{ obj.timestamp|date:"d M Y" }}</p>
         <a href="#" class="btn btn-primary">Открыть</a>
     </div>
     </div>
@@ -21,8 +21,11 @@
     
 
     <form action=''>
-    <label for='fname'>Город</label><br>
-    <input type='text' id='fname' name='fname'>
+    <label>Город</label><br>
+    <input type='text' name='city'><br>
+    <label>Специальность</label><br>
+    <input type="text" name="language"><br>
     <input type='submit' value='Отправить'>
+    </form>
 
     {% endblock content %}
