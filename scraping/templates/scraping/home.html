@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-    {% block title %}Страница Home{% endblock title %}
+    {% block title %}Удалённая работа для всех{% endblock title %}
 
     {% block content %}
 
@@ -8,24 +8,42 @@
     {% for obj in object_list %}
 
     <div class="card">
-    <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
+    <a class="card-header" href="{{ obj.url }}"><h2>{{ obj.title }}</h2></a>
     <div class="card-body">
-        <h5 class="card-title">{{ obj.company }}</h5>
+        <!--<h5 class="card-title">{{ obj.company }}</h5> -->
         <p class="card-text">{{ obj.description }}</p>
-        <p class="text-muted small">{{ obj.city.name }} | {{ obj.language.name }} | {{ obj.timestamp|date:"d M Y" }}</p>
-        <a href="#" class="btn btn-primary">Открыть</a>
+        <p class="text-muted small">{{ obj.company }} | {{ obj.city.name }} | {{ obj.language.name }} | {{ obj.timestamp|date:"d M Y" }}</p>
+        <button type="button" class="btn btn-outline-primary btn-sm">Открыть</a></button>
     </div>
     </div>
 
     {% endfor %}
-    
-
-    <form action=''>
-    <label>Город</label><br>
-    <input type='text' name='city'><br>
-    <label>Специальность</label><br>
-    <input type="text" name="language"><br>
-    <input type='submit' value='Отправить'>
+    <p>
+    <form action="">
+    <!--
+        <div class="col">
+        <input type="text" class="form-control" placeholder="First name">
+        </div>
+        <div class="col">
+        <input type="text" class="form-control" placeholder="Last name">
+        </div>-->
+        <div class="form-inline">
+        {{ form.as_table }}
+        <!--<div class="col">-->
+            <input type='submit' class='btn btn-outline-secondary' value='Отправить'>
+        </div>
     </form>
+</p>
 
+<!--
+<p>
+    <form action="" class="form-inline"> 
+        <div class="form-group">
+        {{ form.as_p }}
+       
+    <input type='submit' class='btn-outline-secondary' value='Отправить'>
+        </div>
+    </form>
+</p>
+-->
     {% endblock content %}
