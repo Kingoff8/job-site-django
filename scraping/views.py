@@ -7,8 +7,8 @@ def home_view(request):
     city = request.GET.get('city')
     language = request.GET.get('language')
     qs = []
+    _filter = {}
     if city or language:
-        _filter = {}
         if city:
             _filter['city__slug'] = city
         if language:
