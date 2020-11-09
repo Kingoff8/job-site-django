@@ -1,0 +1,89 @@
+[
+{
+  "model": "scraping.city",
+  "pk": 1,
+  "fields": {
+    "name": "Москва",
+    "slug": "22"
+  }
+},
+{
+  "model": "scraping.city",
+  "pk": 2,
+  "fields": {
+    "name": "Kiev",
+    "slug": "1"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 3,
+  "fields": {
+    "name": "python",
+    "slug": "python"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 4,
+  "fields": {
+    "name": "java",
+    "slug": "java"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 5,
+  "fields": {
+    "name": "php",
+    "slug": "php"
+  }
+},
+{
+  "model": "scraping.language",
+  "pk": 6,
+  "fields": {
+    "name": "Си плюс плюс Si plus Plus",
+    "slug": "si-plus-plus"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 1,
+  "fields": {
+    "url": "https://passport.yandex.ru/profile?origin=browser_desktop_additional_login2",
+    "title": "Python junior",
+    "company": "google",
+    "description": "Требуется срочно!\r\nОплата: 2500$\r\nВозьмём тебя!",
+    "city": 1,
+    "language": 3,
+    "timestamp": "2020-06-21"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 2,
+  "fields": {
+    "url": "https://browser.yandex.ru/activation/auth-closer.html",
+    "title": "Стажёр Java",
+    "company": "google",
+    "description": "Требуется стажёр со стипендией.\r\n1000$",
+    "city": 2,
+    "language": 4,
+    "timestamp": "2020-06-22"
+  }
+},
+{
+  "model": "scraping.vacancy",
+  "pk": 3,
+  "fields": {
+    "url": "https://kaliningrad.hh.ru/vacancy/39650542?query=python",
+    "title": "Программист Python",
+    "company": "Creative",
+    "description": "Требуемый опыт работы: 1–3 года\r\n\r\nПолная занятость, удаленная работа\r\n\r\nПривет! Это Екатерина Седых - HR из компании Creative. Мы занимаемся веб и мобильной разработкой: помогаем нашим клиентам эффективно инвестировать деньги в цифровую среду и стремимся стать лидерами на российском рынке.\r\n\r\nРаботаем с крупными федеральными и зарубежными компаниями - Сбербанк, Альфа Банк, Банк Открытие, Газпромнефть, РБК, Utair, Московская биржа, Новостроев, Моссвет и многие другие.\r\n\r\nКоманда: более 60 человек (бэкенд, фронтенд и мобильные разработчики, тестировщики, дизайнеры, менеджеры IT-проектов).\r\n\r\nКто нам нужен: Middle/Senior Python-разработчики, готовые в составе талантливой команды разработки делать интересные и полезные проекты, работаю",
+    "city": 1,
+    "language": 3,
+    "timestamp": "2020-10-22"
+  }
+}
+]
