@@ -1,5 +1,5 @@
 from django import forms
-from scraping.models import City, Language, Vacancy
+from scraping.models import City, Language, Vacancy, Experience
 
 #class FindForm(forms.Form):
     #city =forms.ModelChoiceField(queryset=City.objects.all()) # добавлена одна скобка, после раскоммент удалить
@@ -25,3 +25,9 @@ class FindForm(forms.Form):
         widget=forms.Select(attrs={'class': 'form-control'}),
         label='Специальность'
         )
+
+    experience = forms.ModelChoiceField(
+    queryset=Experience.objects.all(), to_field_name="slug", required=False,
+    widget=forms.Select(attrs={'class': 'form-control'}),
+    label='Опыт работы'
+    )
