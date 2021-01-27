@@ -1,8 +1,10 @@
 from django.db import models
-from django.template.defaultfilters import slugify
+from .utils import from_cyrillic_to_eng
+
 
 class City(models.Model):
-    name = models.CharField(max_length=50, verbose_name='Название города')
+
+    name = models.CharField(max_length=50, verbose_name='Название города', unique=True)
     slug = models.CharField(max_length=50, blank=True, unique=True)
 
     class Meta:
@@ -14,12 +16,13 @@ class City(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(str(self.name))
+            self.slug = from_cyrillic_to_eng(str(self.name))
             super().save(*args, **kwargs)
+
 
 class Language(models.Model):
 
-    name = models.CharField(max_length=50, verbose_name='Язык программирования')
+    name = models.CharField(max_length=50, verbose_name='Язык программирования', unique=True)
     slug = models.CharField(max_length=50, blank=True, unique=True)
 
     class Meta:
@@ -31,15 +34,16 @@ class Language(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(str(self.name))
+            self.slug = from_cyrillic_to_eng(str(self.name))
             super().save(*args, **kwargs)
+
 
 class Vacancy(models.Model):
     url = models.URLField(unique=True)
     title = models.CharField(max_length=250, verbose_name='Заголовок')
     company = models.CharField(max_length=250, verbose_name='Компания')
     description = models.TextField(verbose_name='Описание') 
-    city = models.ForeignKey('City', on_delete=models.CASCADE, verbose_name='Город')
+    city = models.ForeignKey('City', on_delete=models.CASCADE, verbose_name='Город', related_name='vacancies')
     language = models.ForeignKey('Language', on_delete=models.CASCADE, verbose_name='Язык')
     timestamp = models.DateField(auto_now_add=True)
 
