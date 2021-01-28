@@ -12,12 +12,12 @@
     <div class="card-body">
         <!--<h5 class="card-title">{{ obj.company }}</h5> -->
         <p class="card-text">{{ obj.description }}</p>
-        <p class="text-muted small">{{ obj.company }} | {{ obj.city.name }} | {{ obj.language.name }} | {{ obj.timestamp|date:"d M Y" }}</p>
+        <p class="text-muted small">{{ obj.language.name }} | {{ obj.experience }} | {{ obj.company }} | {{ obj.city.name }}  | {{ obj.timestamp|date:"d M Y" }}</p>
         <button type="button" class="btn btn-outline-primary btn-sm">Открыть</a></button>
     </div>
     </div>
     {% empty %}
-        <h3>Ничего не найдено</h3>
+        <h3>По вашему запросу ничего не найдено.<br>Выберите другие фильтры.</h3>
     {% endfor %}
     <p>
     <form action="">
