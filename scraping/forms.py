@@ -15,11 +15,7 @@ from scraping.models import City, Language, Vacancy, Experience
     # label='Специальность')
 
 class FindForm(forms.Form):
-    city = forms.ModelChoiceField(
-        queryset=City.objects.all(), to_field_name="slug", required=False,
-        widget=forms.Select(attrs={'class': 'form-control'}),
-        label='Город'
-    )
+
     language = forms.ModelChoiceField(
         queryset=Language.objects.all(), to_field_name="slug", required=False,
         widget=forms.Select(attrs={'class': 'form-control'}),
@@ -30,4 +26,10 @@ class FindForm(forms.Form):
     queryset=Experience.objects.all(), to_field_name="slug", required=False,
     widget=forms.Select(attrs={'class': 'form-control'}),
     label='Опыт работы'
+    )
+
+    city = forms.ModelChoiceField(
+        queryset=City.objects.all(), to_field_name="slug", required=False,
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        label='Расположение офиса'
     )
