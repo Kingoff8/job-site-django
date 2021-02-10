@@ -25,7 +25,6 @@ def driver():
     print('\nStart browser...')        
     driver = webdriver.Firefox(profile)
 
-
     yield driver
     print("\nquit browser..")
     driver.quit()

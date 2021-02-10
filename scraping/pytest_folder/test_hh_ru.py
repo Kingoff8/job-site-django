@@ -1,6 +1,12 @@
+import time
 from pages.locators import HhRuLocators
 
-link = 'https://юзерагент.рф'
 
 def test_hh_ru(driver):
-    driver.get(link)
+
+    #link = 'https://юзерагент.рф'
+    driver.get(HhRuLocators.START_LINK)
+    time.sleep(1)
+    print(driver.page_source)
+    title = driver.find_element(*HhRuLocators.TITLE).text
+    print(title)
