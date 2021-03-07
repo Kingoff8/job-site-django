@@ -24,7 +24,7 @@ profile.set_preference("general.useragent.override", r_user_agent)
 @pytest.fixture(scope="function")
 def driver():
     print('\nStart browser...')        
-    driver = webdriver.Firefox(profile)
+    driver = webdriver.Firefox(profile, options=opt)
 
     yield driver
     print("\nquit browser..")
