@@ -20,6 +20,7 @@ r_user_agent = random.choice(r_user_agent)
 profile = webdriver.FirefoxProfile()
 profile.set_preference("general.useragent.override", r_user_agent)
 
+# бедет запущено с каждой функцией
 @pytest.fixture(scope="function")
 def driver():
     print('\nStart browser...')        
@@ -28,3 +29,7 @@ def driver():
     yield driver
     print("\nquit browser..")
     driver.quit()
+
+# принимаем из командной строки значение для импорта класса в обработчике
+def pytest_addoption(parser):
+    parser.addoption('--site', action='store', default=None, help='Choose name site...')
