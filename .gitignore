@@ -4,6 +4,7 @@
 
 __pycache__/
 */__pycache__/
+__pycache__
 #*.py[cod]
 #*$py.class
 
@@ -13,6 +14,7 @@ local_settings.py
 #db.sqlite3
 migrations/
 
+source_page_hh_ru.html
 # Flask stuff:
 #instance/
 #.webassets-cache

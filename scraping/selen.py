@@ -1,5 +1,7 @@
 import time
 import random
+import csv
+
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
@@ -31,7 +33,16 @@ driver = webdriver.Firefox(profile, options=opt)
 
 # browser = webdriver.Chrome(chrome_options=opts)
 
-link = 'https://hh.ru/search/vacancy?st=searchVacancy&text=&salary=&currency_code=RUR&experience=doesNotMatter&order_by=relevance&search_period=0&items_on_page=5&no_magic=true&L_save_area=true'
+# функция сохранения данных в csv
+
+def write_csv(table_0):
+    with open("table_vacancy.csv", mode="w", encoding='utf-8') as w_file:
+        names = ["Заголовок", "Описание"]
+        file_writer = csv.DictWriter(w_file, delimiter = ",", 
+                                    lineterminator="\r", fieldnames=names)
+        file_writer.writeheader(table_0)
+
+link = 'https://hh.ru/search/vacancy?st=searchVacancy&text=&salary=&currency_code=RUR&experience=doesNotMatter&order_by=relevance&search_period=0&items_on_page=2&no_magic=true&L_save_area=true'
 
 #link = 'https://юзерагент.рф'
 try:
@@ -72,6 +83,13 @@ try:
             except:
                 city = driver.find_element_by_css_selector('span[data-qa=vacancy-view-raw-address]')
 
+            table_0 = {
+                'title': title.text,
+                'experience': experience.text,
+                'description': description.text
+            }
+            
+                
             print(city.text)
             money = driver.find_element_by_css_selector('span[data-qa=bloko-header-2]')
             print(money.text)
@@ -88,7 +106,11 @@ try:
 # ниже не раскомент
 
     # page = driver.page_source
-
+    with open("table_vacancy.csv", mode="w", encoding='utf-8') as w_file:
+        names = ["Заголовок", "Описание"]
+        file_writer = csv.DictWriter(w_file, delimiter = ",", 
+                                    lineterminator="\r", fieldnames=names)
+        file_writer.writeheader(table_0)
     
 
 finally:

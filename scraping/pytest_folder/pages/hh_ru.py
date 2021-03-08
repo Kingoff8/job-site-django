@@ -1,16 +1,24 @@
 import time
 from pages.base_page import BasePage
-from pages.locators import HhRuLocators
 from selenium.webdriver.common.by import By
+import pytest
+#from pages.locators import HhRuLocators as Locators
 
 class HhRuScrap(BasePage): 
-    
-    def pars_vacancy(self):
-        self.get_list()
+
+
+    def open(self, Locators):
+        print('2: ', Locators)
+        link = Locators.START_LINK
+        print(link)
+        self.driver.get(link)
+
+    def pars_vacancy(self, Locators):
+        self.get_list(Locators)
         self.extract_vacancy()
 
-    def get_list(self):
-        self.list_links = self.driver.find_elements(*HhRuLocators.LIST_LINKS)
+    def get_list(self, Locators):
+        self.list_links = self.driver.find_elements(*Locators.LIST_LINKS)
         #return list_links
         assert self.list_links != None
 
@@ -60,3 +68,4 @@ class HhRuScrap(BasePage):
             # sitch to main window
             main_window = self.driver.window_handles[0]
             self.driver.switch_to.window(main_window)
+    
