@@ -12,12 +12,6 @@ def test_hh_ru(driver,request):
         return Locators
 
 
-    #link = 'https://юзерагент.рф'
-    # driver.get(Locators.START_LINK)
-    # time.sleep(1)
-    # print(driver.page_source)
-    # title = driver.find_element(*Locators.TITLE).text
-    # print(title)
     page = HhRuScrap(driver)
     #page.import_class(site)
     page.open(Locators)
@@ -29,4 +23,3 @@ def test_hh_ru(driver,request):
     time.sleep(1)
     #print(driver.page_source)
     
-    #print(title)

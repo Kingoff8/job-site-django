@@ -15,7 +15,7 @@ class HhRuScrap(BasePage):
 
     def pars_vacancy(self, Locators):
         self.get_list(Locators)
-        self.extract_vacancy()
+        self.extract_vacancy(Locators)
 
     def get_list(self, Locators):
         self.list_links = self.driver.find_elements(*Locators.LIST_LINKS)
@@ -23,7 +23,7 @@ class HhRuScrap(BasePage):
         assert self.list_links != None
 
     
-    def extract_vacancy(self):
+    def extract_vacancy(self, Locators):
         n = 0
         #извлекаем ссылки из списка
         for self.link in self.list_links: 
@@ -43,24 +43,24 @@ class HhRuScrap(BasePage):
             
             # get field vacancy
             try:
-                title = self.driver.find_element_by_css_selector('h1[data-qa=vacancy-title]')
-                print(title.text)
-                experience = self.driver.find_element_by_css_selector('span[data-qa=vacancy-experience')
-                print(experience.text)
-                description = self.driver.find_element_by_css_selector('div[data-qa=vacancy-description')
-                print(description.text)
+                title = self.driver.find_element(*Locators.TITLE).text
+                print(title)
+                experience = self.driver.find_element(*Locators.EXPERIENCE).text
+                print(experience)
+                description = self.driver.find_element(*Locators.DESCRIPTION).text
+                print(description)
                 #print(driver.page_source)
 
                 try:
-                    city = self.driver.find_element_by_css_selector('p[data-qa=vacancy-view-location]')
+                    city = self.driver.find_element(*Locators.CITY_LOC)
                 except:
-                    city = self.driver.find_element_by_css_selector('span[data-qa=vacancy-view-raw-address]')
+                    city = self.driver.find_element(*Locators.SITY_ADDR)
 
                 print(city.text)
-                money = self.driver.find_element_by_css_selector('span[data-qa=bloko-header-2]')
+                money = self.driver.find_element(*Locators.MONEY)
                 print(money.text)
             except:
-                f = open('source_page_hh_ru.html', 'w')
+                f = open('error_source_page_hh_ru.html', 'w')
                 f.write(self.driver.page_source)
                 f.close()
 
